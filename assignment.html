@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Name Greeter</title>
+</head>
+<body>
+    <h1>Check the Console for Output</h1>
+    <script>
+        // Simulated "external" library 1 - HelloPrinter (with initial bugs)
+        const HelloPrinter = {
+            // Bug: missing 'name' parameter and incorrect string format
+            printHello: function(name) {  // Fixed from: printHello: function() {
+                console.log("Hello " + name);  // Fixed from: console.log(Hello name);
+            }
+        };
+
+        // Simulated "external" library 2 - GoodbyePrinter (with initial bugs)
+        const GoodbyePrinter = {
+            // Bug: typo in function name and case sensitivity issue
+            printGoodbye: function(name) {  // Fixed from: PrintGoodby: function(Name) {
+                console.log("Goodbye " + name);  // Fixed from: console.log("goodbye" + Name);
+            }
+        };
+
+        // Main code to process the names
+        const names = [
+            "John",
+            "Alice",
+            "James",
+            "Bob",
+            "julia",
+            "Mike",
+            "Jenny",
+            "Tom"
+        ];
+
+        // Function to process and print names
+        function processNames(nameArray) {
+            nameArray.forEach(function(name) {
+                // Check if name starts with 'j' or 'J'
+                if (name.toLowerCase().startsWith('j')) {
+                    GoodbyePrinter.printGoodbye(name);
+                } else {
+                    HelloPrinter.printHello(name);
+                }
+            });
+        }
+
+        // Run the program
+        processNames(names);
+    </script>
+</body>
+</html>
